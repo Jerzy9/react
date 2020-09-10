@@ -1,4 +1,16 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
-ReactDOM.render(<h1>Hello world</h1>,document.getElementById("root"));
+function MyApp() {
+    return(
+     <div>  
+        <ul>
+            <li>apple</li>
+            <li>banana</li>
+            <li>orange</li>
+        </ul>
+    </div>
+    )
+}
+
+ReactDOM.render(<MyApp /> ,document.getElementById("root"));
