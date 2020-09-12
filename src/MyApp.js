@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import './style.css'
 
 function MyApp() {
     return(
-     <div>   
+     <div className="container">
+        <Navbar />   
         <Main />
     </div>
     )
@@ -13,19 +15,30 @@ class Main extends Component {
       const names = ['1', '2', '3', '5'];
    
       return (
-        <div>
+        <div className="tasks">
             {names.map((value, index) => {
-                return <h1 key={index}>{value}</h1>;
+                // return <h1 key={index}>{value}</h1>;
+                return (
+                  <div key = {index} className="task">
+                    <input className="checkbox" type="checkbox"/>
+                    <label className="paragraph"> Task numer {value} </label>
+                  </div>
+                )
             })}
-          
         </div>
       );
     }
   }
+
+  function Navbar() {
+    return (
+      <div className="navbar">
+        <p>
+          TODO apliacation
+        </p>
+      </div>
+    )
+  }
    
-//   class Greeting extends Component {
-//     render() {
-//       return 
-//     }
-//   }
+
 export default MyApp
