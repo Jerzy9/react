@@ -6,7 +6,7 @@ import products from './productsData'
 
 function MyApp() {
 
-   let names = products.map((product, key) => <Name key={key} id={product.id} name={product.name} /> )
+   let names = products.map((product) => <Name product={product} /> )
 
   return (
   <div>
@@ -17,13 +17,14 @@ function MyApp() {
 }
 
 function Name(props) {
-
-  return (
-    <div> 
-      <p>{props.id}   {props.key}    .</p>
-      <h3>{props.name}</h3>
-    </div>
-  )
+    return (
+      <div style={{display:"flex"}}>
+        <input type="checkbox" checked={props.product.id[0]>5 ? true : false}/> 
+        <p>{props.product.id}</p>
+        <h3 style={{marginBottom: 50}}> {props.product.name} </h3>
+        
+      </div>
+    )
 }
 
 export default MyApp
