@@ -7,26 +7,31 @@ import products from './productsData'
 
 class MyApp extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
-      count:0,
+      count:0
     }
     this.handleClick = this.handleClick.bind(this)
   }
   
-  handleClick(i) {
-    i++;
-    this.setState({ count: i})
+  handleClick() {
+    
+    this.setState(prevState => {
+      return {
+        count:prevState.count + 1
+      }
+    })
   }
 
+
   render() {
-    let i = 0;
+  
       return (
         <div >
           <h1>{this.state.count}</h1>
-           <button onClick={this.handleClick(i)}>Change</button>
+           <button onClick={this.handleClick} >Change</button>
         </div>
-      );
+      )
     
   }
 }
