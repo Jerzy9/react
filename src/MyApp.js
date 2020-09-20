@@ -1,40 +1,78 @@
 import React, { Component } from 'react'
 import './style.css'
 import products from './productsData'
-// import { render } from 'react-dom'
-
+import { render } from 'react-dom'
 
 
 class MyApp extends React.Component {
   constructor() {
     super()
     this.state = {
-      count:0
+      isLogIn: false
     }
-    this.handleClick = this.handleClick.bind(this)
+    this.handleClicked = this.handleClicked.bind(this)
   }
-  
-  handleClick() {
-    
-    this.setState(prevState => {
+
+  handleClicked() {
+    console.log("prevState " + this.state.isLogIn)
+    let newState
+    this.setState((prevState) => {
+      newState = !prevState.isLogIn
+
       return {
-        count:prevState.count + 1
+        isLogIn:newState
       }
     })
+    console.log("actualState " + this.state.isLogIn)
   }
 
+ render() {
+  let text
+  let btnText
 
+  if(this.state.isLogIn) {
+    text = "You are log In" 
+    btnText = "Log out"
+  }
+  else {
+    text = "You are log out"
+    btnText = "Log in"
+  } 
+
+   return(
+     <div>
+       <Text text={text}/>
+       <Btn text={btnText} handleClicked={this.handleClicked} />
+
+      </div>
+   )
+ 
+ }
+}
+
+class Text extends React.Component {
   render() {
-  
-      return (
-        <div >
-          <h1>{this.state.count}</h1>
-           <button onClick={this.handleClick} >Change</button>
-        </div>
-      )
-    
+
+    return(
+      <div>
+          <p>{this.props.text}</p>
+      </div>
+    )
   }
 }
 
+class Btn extends React.Component {
+  render() {
+    
+    return(
+      <div>
+        <button onClick={this.props.handleClicked}>
+
+          {this.props.text}
+        </button>
+      </div>
+    )
+  }
+}
 
 export default MyApp
